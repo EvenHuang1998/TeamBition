@@ -1,48 +1,86 @@
-**用户登录**：(后端以头部形式返回cookie)
+##**用户登录**：(后端以头部形式返回cookie)
 
-方式：GET
+方式：POST
 
-接口：/login/:code/
+接口：/login
+
+参数 :code (str)
 
 返回参数：
 
+若用户曾经注册过：
+
 {
 
-​	userid:VCG256,
+​	status:"OK",
 
-​	truename:黎明,
-
-​	nickname：liming
+​	cookie:自定义登录态
 
 }
 
-**用户信息上传**
-
-方式:POST，
-
-接口:/setuserinfo/:userid
-
-参数：
+若用户未注册过：
 
 {
 
-​	trueName:'姓名',
+​	status:"need reg",
 
-​	nickName:'昵称',
+​	cookie:自定义登录态
+
+}
+
+##**用户信息上传**
+
+方式:POST，
+
+接口:/setuserinfo
+
+传入参数：
+
+{
+
+​	truename:'姓名',
+
+​	nickname:'昵称',
 
 ​	avater:'http://baidu.com'
 
 }
 
+返回参数：
 
+1）不是在微信中打开：
 
-**首页信息获取**
+NOT_WECHAT,403
+
+2)数据库插入失败
+
+SQL_ERR,503
+
+3)检查登录失败
+
+USER_NOT_LOGIN,403
+
+##**首页信息获取**
 
 方式：GET
 
-接口：/gethomepage/:userid
+接口：/gethomepage
 
 返回参数：
+
+1）不是微信登录
+
+NOT_WECHAT,403
+
+2）openid不存在
+
+DATA_ERR,403
+
+3)用户未登录
+
+USER_NOT_LOGIN,403
+
+4）正常数据（不返回is_recycle为True的数据）
 
 {
 
@@ -50,11 +88,13 @@
 
 ​		{
 
-​			imgUrl:'https://www.baodu.com',
+​			imgUrl:'https://www.baidu.com',
 
 ​			projectid:1,
 
 ​			projectName:'项目一',
+
+​			isRecycle:'N'
 
 ​		}
 
@@ -66,9 +106,11 @@
 
 ​			imgUrl:'https://www.baodu.com',
 
-​			projectid:1,
+​			projectId:1,
 
 ​			projectName:'项目一',
+
+​			isRecycle:'Y'
 
 ​		}
 
@@ -84,6 +126,8 @@
 
 ​			projectName:'项目一',
 
+​			isRecycle:'Y'
+
 ​		}
 
 ​	]
@@ -94,7 +138,7 @@
 
 方式：GET，
 
-接口:/addAttention/:userid/:projectid
+接口:/addAttention/:projectid
 
 参数：
 
@@ -254,7 +298,7 @@
 
 }
 
-**任务详情**：
+**任务详情**：work
 
 方式：GET，
 
@@ -268,9 +312,9 @@
 
 ​	executor:[
 
-​		'执行一',
+​		'执行者一',
 
-​		'执行二'
+​		'执行者二'
 
 ​	]
 
@@ -434,7 +478,7 @@
 
 **发布通知**：
 
-方式：POST,
+方式：POST, （后端自己生成noticeid和time）
 
 接口：/addnotice/:projectid/:userid
 
