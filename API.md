@@ -140,7 +140,7 @@ USER_NOT_LOGIN,403
 
 接口:/addAttention/:projectid
 
-参数：
+i参数：
 
 {
 
@@ -148,17 +148,17 @@ USER_NOT_LOGIN,403
 
 }
 
-**创建项目**:
+**创建项目**:   发送数据时，将content-type改为application/json
 
 方式:POST,
 
-接口:/createProject/:userid
+接口:/createProject
 
 发送body：
 
 {
 
-​	projectnName:'项目一',
+​	projectName:'项目一',
 
 ​	imgUrl:'https://baidu.com',
 
@@ -190,7 +190,7 @@ USER_NOT_LOGIN,403
 
 方式:GET
 
-接口：/addrecycle/:userid/:projectid
+接口：/addrecycle/:projectid
 
 返回参数：
 
@@ -200,11 +200,11 @@ USER_NOT_LOGIN,403
 
 }
 
-**获取回收站信息**：
+**获取回收站信息**：  (还没做)
 
 方式：GET，
 
-接口：/getrecycle/:userid/:page/:limit
+接口：/getrecycle/:page/:limit
 
 返回参数:
 
@@ -212,7 +212,7 @@ USER_NOT_LOGIN,403
 
 ​	{
 
-​			imgUrl:'https://www.baodu.com',
+​			imgUrl:'https://www.baidu.com',
 
 ​			projectid:1,
 
@@ -254,7 +254,7 @@ USER_NOT_LOGIN,403
 
 方式：GET，
 
-接口：/getprojectstate/:userid/:projectid
+接口：/getprojectstate/:projectid
 
 参数:
 
@@ -286,7 +286,7 @@ USER_NOT_LOGIN,403
 
 ​					workName:'任务一',
 
-​					condition:0
+​					isFinished:0
 
 ​				}
 
