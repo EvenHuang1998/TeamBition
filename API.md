@@ -276,7 +276,7 @@ i参数：
 
 ​					workName:'任务一',
 
-​					condition:0
+​					isFinished:N  
 
 ​				},
 
@@ -286,7 +286,7 @@ i参数：
 
 ​					workName:'任务一',
 
-​					isFinished:0
+​					isFinished:Y
 
 ​				}
 
@@ -298,11 +298,11 @@ i参数：
 
 }
 
-**任务详情**：work
+**任务详情**：work   content-type:application/json
 
 方式：GET，
 
-接口：/getworkdetail/:userid/:workid
+接口：/getworkdetail:workid   
 
 参数：
 
@@ -330,7 +330,7 @@ i参数：
 
 方式：GET，
 
-接口:/recievework/:userid/:workid
+接口:/recievework/:workid
 
 参数：
 
@@ -344,7 +344,7 @@ i参数：
 
 方式：DELETE
 
-接口:/deletework/:userid/:workid
+接口:/deletework/:workid
 
 参数：{
 
@@ -356,7 +356,7 @@ i参数：
 
 方式：GET，
 
-接口:/finishwork/:userid/:workid
+接口:/finishwork/:workid
 
 参数：
 
@@ -370,7 +370,7 @@ i参数：
 
 方式：POST，
 
-接口：/changeworktime/:userid/:workid
+接口：/changeworktime/:workid
 
 参数：
 
@@ -384,7 +384,7 @@ i参数：
 
 方式：POST，
 
-接口：/creatework/:userid
+接口：/creatework
 
 参数：
 
@@ -394,13 +394,13 @@ i参数：
 
 ​	workname:'任务一',
 
-​	endtime:2019.03.06,
+​	endtime:2019-03-06 11:00:00,
 
 ​	remark:'备注',
 
 ​	participant:[
 
-​		1，2，3(userid)
+​		1，2，3(openid)
 
 ​	]
 
@@ -420,7 +420,7 @@ i参数：
 
 ​		{
 
-​			userid:1,
+​			openid:1,
 
 ​			userName:'limign',
 
@@ -430,7 +430,7 @@ i参数：
 
 ​		{
 
-​			userid:1,
+​			openid:1,
 
 ​			userName:'limign',
 
@@ -462,7 +462,7 @@ i参数：
 
 ​		noticeId:1,
 
-​		date:2019.03.03  01:01:01
+​		time:2019.03.03  01:01:01
 
 ​		projectid:1,
 
@@ -480,7 +480,7 @@ i参数：
 
 方式：POST, （后端自己生成noticeid和time）
 
-接口：/addnotice/:projectid/:userid
+接口：/addnotice/:projectid
 
 参数：
 
@@ -494,7 +494,7 @@ i参数：
 
 方式：POST,
 
-接口：/setproject/:projectid/:userid
+接口：/setproject/:projectid
 
 参数：
 
