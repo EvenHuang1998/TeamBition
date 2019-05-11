@@ -384,7 +384,7 @@ i参数：
 
 方式：POST，
 
-接口：/creatework
+接口：/creatework    content-type:application/jsopn
 
 参数：
 
