@@ -28,7 +28,7 @@
 
 }
 
-##**用户信息上传**
+**用户信息上传**
 
 方式:POST，
 
@@ -46,41 +46,14 @@
 
 }
 
-返回参数：
 
-1）不是在微信中打开：
-
-NOT_WECHAT,403
-
-2)数据库插入失败
-
-SQL_ERR,503
-
-3)检查登录失败
-
-USER_NOT_LOGIN,403
-
-##**首页信息获取**
+**首页信息获取**
 
 方式：GET
 
 接口：/gethomepage
 
-返回参数：
-
-1）不是微信登录
-
-NOT_WECHAT,403
-
-2）openid不存在
-
-DATA_ERR,403
-
-3)用户未登录
-
-USER_NOT_LOGIN,403
-
-4）正常数据（不返回is_recycle为True的数据）
+返回参数（不返回is_recycle为True的数据）
 
 {
 
@@ -90,12 +63,15 @@ USER_NOT_LOGIN,403
 
 ​			imgUrl:'https://www.baidu.com',
 
-​			projectid:1,
+​			projectId:1,
 
 ​			projectName:'项目一',
 
 ​			isRecycle:'N'
-
+      
+      creater:
+      
+      total:
 ​		}
 
 ​	],
@@ -110,7 +86,13 @@ USER_NOT_LOGIN,403
 
 ​			projectName:'项目一',
 
-​			isRecycle:'Y'
+​			isRecycle:'Y',
+
+      isAttention:
+      
+      creater:
+      
+      total:
 
 ​		}
 
@@ -122,11 +104,15 @@ USER_NOT_LOGIN,403
 
 ​			imgUrl:'https://www.baodu.com',
 
-​			projectid:1,
+​			projectId:1,
 
 ​			projectName:'项目一',
 
 ​			isRecycle:'Y'
+
+      isAttention:
+      
+      total:
 
 ​		}
 
@@ -330,9 +316,15 @@ i参数：
 
 方式：GET，
 
-接口:/recievework/:workid
+接口:/receivework
 
-参数：
+发送参数：
+{
+  workid:work1,
+  formid:formid
+}
+
+返回参数：
 
 {
 
